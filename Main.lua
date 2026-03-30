@@ -276,7 +276,7 @@ end
 local function CollectOrb(o)
     if not Plr.Character then return end
     if not autoCollectOrb then return end
-    if not v.Name:lower():find("orb") then return end
+    if not o.Name:lower():find("orb") then return end
 
     local part = getPart(o)
     if not part then return end
