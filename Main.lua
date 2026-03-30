@@ -48,10 +48,12 @@ local function getLuck(t)
     local enchants = t:FindFirstChild("Enchants")
     if not enchants then return 0 end
 
-    local luck = enchants:FindFirstChild("Luck")
+    local data = tostring(enchants.Value)
 
-    if luck and tonumber(luck.Value) then
-        return tonumber(luck.Value)
+    local luck = string.match(data, "Luck=(%d+)")
+
+    if luck then
+        return tonumber(luck)
     end
 
     return 0
@@ -128,8 +130,8 @@ local function ESPTarget(t)
     local luck = getLuck(t)
 
     -- Filter
-    if xp < minXP then return end
-    if luck < minLuck then return end
+    if xp < minXP then DisableESP(t) return end
+    if luck < minLuck then DisableESP(t) return end
 
     local hl = Instance.new("Highlight")
     hl.Parent = t
