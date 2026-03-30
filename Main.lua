@@ -213,7 +213,7 @@ ESPTab:CreateToggle({
 ESPTab:CreateSlider({
 
     Name = "Minimum XP",
-    Range = {0,1000000},
+    Range = {0,100000},
     Increment = 1000,
     CurrentValue = 0,
 
@@ -242,6 +242,25 @@ ESPTab:CreateSlider({
 })
 
 ESPTab:CreateSection("ORBS (WIP) ⚠️")
+
+ESPTab:CreateToggle({
+    Name = "Orb ESP",
+    CurrentValue = false,
+    Flag = "What?",
+
+    Callback = function(value)
+
+    end
+})
+
+ESPTab:CreateSlider({
+    Name = "Minimum RNG",
+    Range = {0, 10000},
+    Increment = 100,
+
+    Callback = function(value)
+    end
+})
 
 local function CollectOrb(o)
     if not Plr.Character then return end
@@ -279,3 +298,8 @@ end)
 orbFolder.ChildAdded:Connect(function(c)
     CollectOrb(c)
 end)
+
+while task.wait(0.5) do
+    if not autoCollectOrb then return end
+    CollectAllOrbs()
+end
