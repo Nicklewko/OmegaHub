@@ -1,8 +1,13 @@
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
-local f = workspace.Enemies
+local Plr = game.Players.LocalPlayer
+local Char = Plr.Character
+local Root = Char.HumanoidRootPart
 
-local autoOrb = false
+local f = workspace.Enemies
+local orbFolder = workspace.BattleStuff
+
+local autoCollectOrb = false
 local espEnabled = false
 local minXP = 0
 local minLuck = 0
@@ -96,6 +101,7 @@ local AutoTab = Window:CreateTab("Auto", 4483362458)
 local OPTab = Window:CreateTab("OP", 4483362458)
 
 ESPTab:CreateSection("NPC ESP")
+AutoTab:CreateSection("ORBS")
 
 -- Speicher
 local shown = {}
@@ -229,6 +235,8 @@ ESPTab:CreateSlider({
 
     end
 })
+
+ESPTab:CreateSection("ORBS")
 
 f.ChildAdded:Connect(function(c)
     ESPTarget(c)
