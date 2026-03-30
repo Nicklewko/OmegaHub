@@ -52,6 +52,7 @@ local function getLuck(t)
 
     local luck = string.match(data, "Luck=(%d+)")
 
+    print(data, luck)
     if luck then
         return tonumber(luck)
     end
@@ -112,14 +113,13 @@ end
 local function DisableESPAll()
 
     for i,v in pairs(shown) do
-        DisableESP(v)
+        DisableESP(i)
     end
 end
 
 local function ESPTarget(t)
 
     if not espEnabled then return end
-    if shown[t] then return end
 
     local xpObj = t:FindFirstChild("TotalXP")
     local hrp = t:FindFirstChild("HumanoidRootPart")
@@ -132,6 +132,7 @@ local function ESPTarget(t)
     -- Filter
     if xp < minXP then DisableESP(t) return end
     if luck < minLuck then DisableESP(t) return end
+    if shown[t] then return end
 
     local hl = Instance.new("Highlight")
     hl.Parent = t
