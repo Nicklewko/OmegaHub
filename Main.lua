@@ -2,6 +2,7 @@ local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
 local f = workspace.Enemies
 
+local autoOrb = false
 local espEnabled = false
 local minXP = 0
 local minLuck = 0
@@ -92,7 +93,7 @@ local Window = Rayfield:CreateWindow({
 -- Tab
 local ESPTab = Window:CreateTab("ESP",4483362458)
 local AutoTab = Window:CreateTab("Auto", 4483362458)
-local OPTab = Windows:CreateTab("OP", 4483362458)
+local OPTab = Window:CreateTab("OP", 4483362458)
 
 ESPTab:CreateSection("NPC ESP")
 
