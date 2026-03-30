@@ -50,11 +50,10 @@ local function getLuck(t)
 
     local data = tostring(enchants.Value)
 
-    local luck = string.match(data, "Lucky=(%d+)")
-
-    print(data, luck)
-    if luck then
-        return tonumber(luck)
+    for enchant, value in string.gmatch(data, "(%w+)=(%d+)") do
+        if enchant == "Lucky" then
+            return tonumber(value)
+        end
     end
 
     return 0
