@@ -281,7 +281,7 @@ local function CollectOrb(o)
     local part = getPart(o)
     if not part then return end
 
-    o.AssemblyLinearVelocity = Vector3.zero
+    o.AssemblyLinearVelocity = Vector3.one * 3.444556
     o.AssemblyAngularVelocity = Vector3.zero
     o.CanCollide = false
     o.Massless = true
