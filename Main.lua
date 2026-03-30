@@ -91,6 +91,8 @@ local Window = Rayfield:CreateWindow({
 
 -- Tab
 local ESPTab = Window:CreateTab("ESP",4483362458)
+local AutoTab = Window:CreateTab("Auto", 4483362458)
+local OPTab = Windows:CreateTab("OP", 4483362458)
 
 ESPTab:CreateSection("NPC ESP")
 
