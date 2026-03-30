@@ -158,7 +158,7 @@ local function ESPTarget(t)
 
     rd.BackgroundTransparency = 1
     rd.Size = UDim2.new(1,0,1,0)
-    rd.TextSize = 24
+    rd.TextSize = 16
     rd.Text = "EXP: "..format(xp).." | Luck: "..luck
     rd.TextColor3 = Color3.new(1,1,1)
 
