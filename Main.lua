@@ -1,8 +1,13 @@
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
 local Plr = game.Players.LocalPlayer
-local Char = Plr.Character
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
 local Root = Char.HumanoidRootPart
+
+Plr.CharacterAdded:Connect(function(c)
+    Char = c
+    Root = c.HumanoidRootPart
+end)
 
 local f = workspace.Enemies
 local orbFolder = workspace.BattleStuff
@@ -158,7 +163,7 @@ local function ESPTarget(t)
     st.Parent = rd
     st.Thickness = 2
 
-    ua.WorldPosition = hrp.Position + Vector3.new(0,2,0)
+    ua.Position = Vector3.new(0,2,0)
 
     bu.Size = UDim2.new(15,0,2,0)
     bu.AlwaysOnTop = true
@@ -239,7 +244,12 @@ ESPTab:CreateSlider({
 ESPTab:CreateSection("ORBS (WIP) ⚠️")
 
 local function CollectOrb(o)
+    if not Plr.Character then return end
     if not autoCollectOrb then return end
+
+    local part = o:IsA("BasePart")
+    if not part then return end
+
     firetouchinterest(Root, o, 0)
     task.wait()
     firetouchinterest(Root, o, 1)
@@ -253,17 +263,17 @@ end
 
 AutoTab:CreateToggle({
     Name = "Collect Orbs",
-    CurrentValue = false
-    Flag = "Boi"
+    CurrentValue = false,
+    Flag = "Boi",
 
     Callback = function(value)
-        autoCollectOrb = false
+        autoCollectOrb = value
         if value then CollectAllOrbs() end
     end
 })
 
 f.ChildAdded:Connect(function(c)
-    ESPTarget(c)
+    task.spawn(ESPTarget, c)
 end)
 
 orbFolder.ChildAdded:Connect(function(c)
