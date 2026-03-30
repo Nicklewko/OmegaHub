@@ -266,16 +266,21 @@ ESPTab:CreateSlider({
     end
 })
 
+local function getPart(obj)
+    if obj:IsA("BasePart") then
+       return obj
+    end
+    return obj:FindFirstChildWhichIsA("BasePart")
+end
+
 local function CollectOrb(o)
     if not Plr.Character then return end
     if not autoCollectOrb then return end
 
-    local part = o:IsA("BasePart")
+    local part = getPart(o)
     if not part then return end
 
-    firetouchinterest(Root, o, 0)
-    task.wait()
-    --firetouchinterest(Root, o, 1)
+    o.CFrame = Root.CFrame
 end
 
 local function CollectAllOrbs()
