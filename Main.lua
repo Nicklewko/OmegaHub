@@ -50,7 +50,7 @@ local function getLuck(t)
 
     local data = tostring(enchants.Value)
 
-    local luck = string.match(data, "Luck=(%d+)")
+    local luck = string.match(data, "Lucky=(%d+)")
 
     print(data, luck)
     if luck then
