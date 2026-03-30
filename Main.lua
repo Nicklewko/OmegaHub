@@ -216,6 +216,7 @@ ESPTab:CreateSlider({
     Range = {0,100000},
     Increment = 1000,
     CurrentValue = 0,
+    Suffix = "XP",
 
     Callback = function(value)
 
@@ -232,6 +233,7 @@ ESPTab:CreateSlider({
     Range = {0,10},
     Increment = 1,
     CurrentValue = 0,
+    Suffix = "Luck",
 
     Callback = function(value)
 
@@ -257,6 +259,8 @@ ESPTab:CreateSlider({
     Name = "Minimum RNG",
     Range = {0, 10000},
     Increment = 100,
+    CurrentValue = 0,
+    Suffix = "RNG",
 
     Callback = function(value)
     end
@@ -299,7 +303,7 @@ orbFolder.ChildAdded:Connect(function(c)
     CollectOrb(c)
 end)
 
-while task.wait(0.5) do
+while task.wait(0.1) do
     if not autoCollectOrb then return end
     CollectAllOrbs()
 end
