@@ -275,7 +275,7 @@ local function CollectOrb(o)
 
     firetouchinterest(Root, o, 0)
     task.wait()
-    firetouchinterest(Root, o, 1)
+    --firetouchinterest(Root, o, 1)
 end
 
 local function CollectAllOrbs()
