@@ -201,8 +201,8 @@ ESPTab:CreateToggle({
 ESPTab:CreateSlider({
 
     Name = "Minimum XP",
-    Range = {0,10000},
-    Increment = 100,
+    Range = {0,1000000},
+    Increment = 1000,
     CurrentValue = 0,
 
     Callback = function(value)
