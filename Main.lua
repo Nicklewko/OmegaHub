@@ -284,6 +284,7 @@ local function CollectOrb(o)
     o.AssemblyAngularVelocity = Vector3.zero
     o.CanCollide = false
     o.Massless = true
+    Root.CFrame = o.CFrame
     o.CFrame = Root.CFrame
     firetouchinterest(Root, o, 0)
     firetouchinterest(Root, o, 1)
