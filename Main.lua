@@ -101,7 +101,7 @@ local AutoTab = Window:CreateTab("Auto", 4483362458)
 local OPTab = Window:CreateTab("OP", 4483362458)
 
 ESPTab:CreateSection("NPC ESP")
-AutoTab:CreateSection("ORBS")
+AutoTab:CreateSection("ORBS 🟠")
 
 -- Speicher
 local shown = {}
@@ -236,8 +236,36 @@ ESPTab:CreateSlider({
     end
 })
 
-ESPTab:CreateSection("ORBS")
+ESPTab:CreateSection("ORBS (WIP) ⚠️")
+
+local function CollectOrb(o)
+    if not autoCollectOrb then return end
+    firetouchinterest(Root, o, 0)
+    task.wait()
+    firetouchinterest(Root, o, 1)
+end
+
+local function CollectAllOrbs()
+    for i, o in pairs(orbFolder:GetChildren()) do
+        CollectOrb(o)
+    end
+end
+
+AutoTab:CreateToggle({
+    Name = "Collect Orbs",
+    CurrentValue = false
+    Flag = "Boi"
+
+    Callback = function(value)
+        autoCollectOrb = false
+        if value then CollectAllOrbs() end
+    end
+})
 
 f.ChildAdded:Connect(function(c)
     ESPTarget(c)
+end)
+
+orbFolder.ChildAdded:Connect(function(c)
+    CollectOrb(c)
 end)
