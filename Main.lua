@@ -276,6 +276,7 @@ end
 local function CollectOrb(o)
     if not Plr.Character then return end
     if not autoCollectOrb then return end
+    if not v.Name:lower():find("orb") then return end
 
     local part = getPart(o)
     if not part then return end
@@ -284,7 +285,6 @@ local function CollectOrb(o)
     o.AssemblyAngularVelocity = Vector3.zero
     o.CanCollide = false
     o.Massless = true
-    Root.CFrame = o.CFrame
     o.CFrame = Root.CFrame
     firetouchinterest(Root, o, 0)
     firetouchinterest(Root, o, 1)
@@ -315,7 +315,7 @@ orbFolder.ChildAdded:Connect(function(c)
     CollectOrb(c)
 end)
 
-while task.wait(0.3) do
+while task.wait(0.075) do
     if not autoCollectOrb then return end
     CollectAllOrbs()
 end
