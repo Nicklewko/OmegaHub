@@ -280,7 +280,13 @@ local function CollectOrb(o)
     local part = getPart(o)
     if not part then return end
 
+    o.AssemblyLinearVelocity = Vector3.zero
+    o.AssemblyAngularVelocity = Vector3.zero
+    o.CanCollide = false
+    o.Massless = true
     o.CFrame = Root.CFrame
+    firetouchinterest(Root, o, 0)
+    firetouchinterest(Root, o, 1)
 end
 
 local function CollectAllOrbs()
@@ -308,7 +314,7 @@ orbFolder.ChildAdded:Connect(function(c)
     CollectOrb(c)
 end)
 
-while task.wait(0.1) do
+while task.wait(0.3) do
     if not autoCollectOrb then return end
     CollectAllOrbs()
 end
